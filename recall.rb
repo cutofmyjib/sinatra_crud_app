@@ -12,6 +12,11 @@ get '/' do
   erb :home
 end
 
+helpers do
+    include Rack::Utils
+    alias_method :h, :escape_html
+end
+
 post '/' do
   n = Note.new
   n.content = params[:content]
